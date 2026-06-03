@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foxcon Contracting — General Contractor | Barrie, Ontario</title>
+    <meta name="description" content="Foxcon Contracting — licensed &amp; insured general contractor serving Barrie and Simcoe County. Excavation, demolition, snow removal, retaining walls, and property maintenance.">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            color: #d1d5db;
+            background: #1a1d23;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+
+        /* ===== COLOUR TOKENS ===== */
+        :root {
+            --navy:      #0a1628;
+            --navy-dark: #060f1e;
+            --steel:     #4b5563;
+            --steel-lt:  #6b7280;
+            --orange:    #f48024;
+            --orange-hv: #e07018;
+            --white:     #f3f4f6;
+            --card-bg:   #1f2937;
+            --card-bdr:  #2d3748;
+        }
+
+        /* ===== UTILITY ===== */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        .section { padding: 5rem 0; }
+        .section-label {
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--steel-lt);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-primary {
+            background: var(--orange);
+            color: #fff;
+        }
+        .btn-primary:hover { background: var(--orange-hv); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(244,128,36,0.35); }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--orange);
+        }
+        .btn-outline:hover { background: var(--orange); }
+
+        /* ===== HEADER / NAV ===== */
+        .site-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10,22,40,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--orange);
+            padding: 0.9rem 0;
+        }
+        .header-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 0.65rem;
+            font-size: 1.5rem; font-weight: 900; color: var(--white); letter-spacing: 1px;
+        }
+        .logo-icon {
+            width: 42px; height: 42px;
+            background: var(--orange);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; font-weight: 900; color: #fff;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--steel-lt); transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--orange); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .hamburger span { width: 28px; height: 3px; background: var(--white); border-radius: 3px; transition: all 0.3s; }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, #0f1d32 100%);
+            position: relative; overflow: hidden;
+            padding-top: 80px;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(244,128,36,0.03) 2px, rgba(244,128,36,0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(75,85,99,0.04) 2px, rgba(75,85,99,0.04) 4px);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--orange), var(--orange) 40%, var(--steel) 40%, var(--steel) 44%, var(--orange) 44%, var(--orange) 84%, var(--steel) 84%);
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 750px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(244,128,36,0.15);
+            border: 1px solid rgba(244,128,36,0.35);
+            color: var(--orange);
+            font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
+            padding: 0.5rem 1.2rem; border-radius: 50px; margin-bottom: 1.75rem;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 8px; height: 8px;
+            background: var(--orange); border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+        .hero h1 {
+            font-size: 3.6rem; font-weight: 900; color: var(--white);
+            line-height: 1.15; margin-bottom: 1.25rem;
+        }
+        .hero h1 span { color: var(--orange); }
+        .hero p {
+            font-size: 1.2rem; color: var(--steel-lt); max-width: 550px;
+            margin-bottom: 2.5rem; line-height: 1.7;
+        }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            background: var(--card-bg); border-bottom: 1px solid var(--card-bdr);
+            padding: 2rem 0;
+        }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;
+        }
+        .stat-number { font-size: 2.2rem; font-weight: 900; color: var(--orange); display: block; line-height: 1; }
+        .stat-label { font-size: 0.85rem; color: var(--steel-lt); text-transform: uppercase; letter-spacing: 1px; margin-top: 0.4rem; }
+
+        /* ===== SERVICES ===== */
+        #services { background: var(--navy-dark); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-bdr);
+            border-left: 4px solid var(--orange);
+            padding: 2rem;
+            border-radius: 6px;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+        }
+        .service-icon {
+            font-size: 2.4rem; margin-bottom: 1rem; display: block;
+        }
+        .service-card h3 {
+            font-size: 1.25rem; font-weight: 800; color: var(--white); margin-bottom: 0.6rem;
+        }
+        .service-card p {
+            font-size: 0.95rem; color: var(--steel-lt); line-height: 1.65;
+        }
+
+        /* ===== ABOUT ===== */
+        #about { background: var(--navy); }
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+        }
+        .about-text p { color: var(--steel-lt); margin-bottom: 1.25rem; font-size: 1.05rem; }
+        .about-highlights {
+            list-style: none; display: grid; gap: 0.8rem; margin-top: 1.5rem;
+        }
+        .about-highlights li {
+            display: flex; align-items: center; gap: 0.7rem;
+            font-weight: 600; color: var(--white); font-size: 0.95rem;
+        }
+        .about-highlights li::before {
+            content: '✓';
+            color: var(--orange); font-weight: 900; font-size: 1.1rem;
+        }
+        .about-image {
+            background: linear-gradient(135deg, var(--orange), var(--navy));
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex; align-items: center; justify-content: center;
+            min-height: 320px;
+        }
+        .about-image-inner {
+            background: rgba(10,22,40,0.85);
+            border: 2px dashed var(--orange);
+            border-radius: 6px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+        .about-image-inner .big-icon { font-size: 4rem; margin-bottom: 0.75rem; }
+        .about-image-inner p { color: var(--white); font-weight: 700; font-size: 1.1rem; }
+
+        /* ===== PROJECT SHOWCASE ===== */
+        #projects { background: var(--navy-dark); }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-bdr);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.25s;
+        }
+        .project-card:hover { transform: translateY(-4px); }
+        .project-placeholder {
+            background: linear-gradient(135deg, var(--steel) 0%, var(--navy) 100%);
+            height: 200px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .project-placeholder::after {
+            content: '📸';
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+        .project-tag {
+            position: absolute; top: 12px; left: 12px;
+            background: var(--orange);
+            color: #fff;
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            padding: 0.3rem 0.7rem; border-radius: 3px;
+        }
+        .project-info { padding: 1.25rem; }
+        .project-info h4 { font-size: 1.1rem; font-weight: 800; color: var(--white); margin-bottom: 0.35rem; }
+        .project-info .location { font-size: 0.85rem; color: var(--orange); margin-bottom: 0.5rem; font-weight: 600; }
+        .project-info p { font-size: 0.9rem; color: var(--steel-lt); }
+
+        /* ===== CONTACT ===== */
+        #contact { background: var(--navy); }
+        .contact-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+        }
+        .contact-info h3 { font-size: 1.6rem; color: var(--white); margin-bottom: 1rem; }
+        .contact-info p { color: var(--steel-lt); margin-bottom: 2rem; }
+        .contact-detail {
+            display: flex; align-items: center; gap: 0.8rem;
+            margin-bottom: 1.1rem; font-size: 1rem; color: var(--white);
+        }
+        .contact-detail .icon { font-size: 1.3rem; }
+        .contact-form {
+            background: var(--card-bg);
+            border: 1px solid var(--card-bdr);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label {
+            display: block; font-weight: 700; color: var(--white);
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: var(--navy-dark);
+            border: 1px solid var(--card-bdr);
+            border-radius: 4px;
+            color: var(--white);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(244,128,36,0.15);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group select { appearance: none; cursor: pointer; }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: var(--navy-dark);
+            border-top: 3px solid var(--orange);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        .footer-brand { font-size: 1.4rem; font-weight: 900; color: var(--white); margin-bottom: 0.5rem; }
+        .footer-tagline { color: var(--steel-lt); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .footer-bottom {
+            border-top: 1px solid var(--card-bdr);
+            padding-top: 1.5rem;
+            font-size: 0.85rem; color: var(--steel);
+        }
+        .footer-bottom span { color: var(--orange); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .hero h1 { font-size: 2.4rem; }
+            .section-title { font-size: 1.8rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">F</div>
+                FOXCON
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-badge">
+                Licensed &amp; Insured — Simcoe County
+            </div>
+            <h1>Building <span>Barrie</span>,<br>One Project at a Time</h1>
+            <p>
+                Foxcon Contracting delivers professional general contracting, excavation, demolition, and site services across Barrie and Simcoe County. Industrial-grade reliability with a safety-first approach.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get a Free Estimate</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS BAR ===== -->
+    <div class="stats-bar">
+        <div class="container stats-grid">
+            <div>
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+            <div>
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Projects Completed</span>
+            </div>
+            <div>
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Licensed &amp; Insured</span>
+            </div>
+            <div>
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Emergency Service</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="section">
+        <div class="container">
+            <span class="section-label">What We Do</span>
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">
+                From ground-up builds to seasonal site maintenance, we cover every phase of your project with skilled teams and heavy equipment.
+            </p>
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <span class="service-icon">🏗️</span>
+                    <h3>General Contracting</h3>
+                    <p>
+                        Full-service construction management for residential, commercial, and industrial projects. We handle permitting, subcontractor coordination, and on-site supervision from start to finish.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🚜</span>
+                    <h3>Excavation &amp; Grading</h3>
+                    <p>
+                        Site preparation, trenching, land clearing, and precision grading for foundations, driveways, drainage systems, and landscaping — backed by a modern equipment fleet.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">💥</span>
+                    <h3>Demolition</h3>
+                    <p>
+                        Safe, controlled demolition of residential and commercial structures. Complete site cleanup and debris removal included — we leave your site ready for the next phase.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">❄️</span>
+                    <h3>Snow Removal</h3>
+                    <p>
+                        Reliable winter services for commercial properties, parking lots, and residential complexes across Barrie. 24/7 storm response with plow trucks, loaders, and salting units.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🧱</span>
+                    <h3>Retaining Walls</h3>
+                    <p>
+                        Engineered retaining wall systems — segmental block, poured concrete, gabion, and timber. We design and build solutions for erosion control, terracing, and structural support.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🔧</span>
+                    <h3>Property Maintenance</h3>
+                    <p>
+                        Year-round property upkeep: lawn care, landscaping, asphalt repair, fence installation, pressure washing, and general site services for commercial and strata properties.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section">
+        <div class="container">
+            <span class="section-label">Who We Are</span>
+            <h2 class="section-title">About Foxcon Contracting</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        Based in <strong>Barrie, Ontario</strong>, Foxcon Contracting has been serving Simcoe County for over 15 years. We're a family-operated general contractor built on the principles of hard work, craftsmanship, and safety.
+                    </p>
+                    <p>
+                        Whether it's a custom home build, a commercial excavation, or emergency snow clearing, our team brings the same commitment to every job: show up on time, work safely, and deliver quality that lasts.
+                    </p>
+                    <ul class="about-highlights">
+                        <li>Licensed &amp; fully insured — WSIB compliant</li>
+                        <li>Serving Simcoe County and surrounding areas</li>
+                        <li>Modern equipment fleet — excavators, loaders, dump trucks</li>
+                        <li>Safety-certified crews — Working at Heights, WHMIS, First Aid</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <div class="about-image-inner">
+                        <div class="big-icon">🦺</div>
+                        <p>Safety First.<br>Quality Always.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECT SHOWCASE ===== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <span class="section-label">Our Work</span>
+            <h2 class="section-title">Project Showcase</h2>
+            <p class="section-subtitle">
+                A selection of recent projects across Barrie and Simcoe County. Contact us for references and a full portfolio.
+            </p>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-placeholder">
+                        <span class="project-tag">Residential</span>
+                    </div>
+                    <div class="project-info">
+                        <h4>Custom Home Foundation</h4>
+                        <p class="location">South Barrie</p>
+                        <p>Full excavation, footings, and foundation pour for a 3,200 sq. ft. custom residence.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-placeholder">
+                        <span class="project-tag">Commercial</span>
+                    </div>
+                    <div class="project-info">
+                        <h4>Retail Plaza Demolition</h4>
+                        <p class="location">Bayfield Street, Barrie</p>
+                        <p>Controlled demolition of a 12,000 sq. ft. strip mall with full site remediation.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-placeholder">
+                        <span class="project-tag">Municipal</span>
+                    </div>
+                    <div class="project-info">
+                        <h4>Snow Clearing Contract</h4>
+                        <p class="location">Downtown Barrie</p>
+                        <p>Seasonal snow removal and salting for municipal parking lots and walkways.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-placeholder">
+                        <span class="project-tag">Residential</span>
+                    </div>
+                    <div class="project-info">
+                        <h4>Retaining Wall System</h4>
+                        <p class="location">Innisfil, ON</p>
+                        <p>120-ft engineered segmental block retaining wall with drainage and backfill.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-placeholder">
+                        <span class="project-tag">Industrial</span>
+                    </div>
+                    <div class="project-info">
+                        <h4>Warehouse Site Prep</h4>
+                        <p class="location">Mapleview Drive, Barrie</p>
+                        <p>Mass excavation, grading, and compaction for a 40,000 sq. ft. industrial building pad.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-placeholder">
+                        <span class="project-tag">Commercial</span>
+                    </div>
+                    <div class="project-info">
+                        <h4>Property Maintenance</h4>
+                        <p class="location">Multi-Site — Simcoe County</p>
+                        <p>Year-round groundskeeping and asphalt maintenance for 8 commercial properties.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section">
+        <div class="container">
+            <span class="section-label">Get In Touch</span>
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's Talk About Your Project</h3>
+                    <p>
+                        Whether you're planning a new build, need excavation services, or want a quote on winter snow removal — we're ready to help. Call or fill out the form and we'll get back to you within 24 hours.
+                    </p>
+                    <div class="contact-detail">
+                        <span class="icon">📞</span>
+                        <span><strong>Phone:</strong> (705) 555-0199</span>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="icon">📧</span>
+                        <span><strong>Email:</strong> info@foxconcontracting.ca</span>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="icon">📍</span>
+                        <span><strong>Address:</strong> 245 Dunlop Street West, Barrie, ON L4N 1C2</span>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="icon">🕐</span>
+                        <span><strong>Hours:</strong> Mon–Fri 7:00 AM – 5:00 PM | 24/7 Emergency</span>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form action="#" method="POST" onsubmit="alert('Thank you! This is a demo form. In production, your message would be sent to the Foxcon team.'); return false;">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(705) 555-0123">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="">— Select a Service —</option>
+                                <option value="general-contracting">General Contracting</option>
+                                <option value="excavation">Excavation &amp; Grading</option>
+                                <option value="demolition">Demolition</option>
+                                <option value="snow-removal">Snow Removal</option>
+                                <option value="retaining-walls">Retaining Walls</option>
+                                <option value="property-maintenance">Property Maintenance</option>
+                                <option value="other">Other / Not Sure</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your project — scope, timeline, location..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-brand">FOXCON CONTRACTING</div>
+            <p class="footer-tagline">Building Barrie, One Project at a Time</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Foxcon Contracting. All rights reserved. &nbsp;|&nbsp; Licensed &amp; Insured &nbsp;|&nbsp; Proudly serving <span>Simcoe County</span></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
